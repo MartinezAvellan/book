@@ -1,0 +1,2 @@
+CREATE DATABASE book;
+USE book;
