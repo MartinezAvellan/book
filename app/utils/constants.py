@@ -14,3 +14,6 @@ TABLE_USER = 'TB_BOOK'
 
 # CONTROLLER CONFIG
 BOOK_CONTROLLER = 'book_controller'
+
+# URL
+GUTENDEX_URL = 'https://gutendex.com/books/?search={}'
