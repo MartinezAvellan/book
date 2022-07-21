@@ -17,4 +17,4 @@ TABLE_REVIEW = 'TB_REVIEW'
 BOOK_CONTROLLER = 'book_controller'
 
 # URL
-GUTENDEX_URL = 'https://gutendex.com/books/?search={}'
+GUTENDEX_URL = 'https://gutendex.com/books/'

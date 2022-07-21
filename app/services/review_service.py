@@ -31,8 +31,8 @@ class ReviewService:
                 raise Exception(response)
         except Exception as e:
             print({'Error': 'review cant be created', 'book_id': int(review.get('user_id')), 'exception': e.args})
-            return {'uuid': uuid.uuid4().__str__(), 'message': 'book_id is required'}, HTTPStatus.BAD_REQUEST
+            return None
 
     @staticmethod
-    def get_reviews(book_id: int) -> dict:
+    def get_reviews_and_average(book_id: int) -> dict:
         return None

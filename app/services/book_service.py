@@ -7,9 +7,9 @@ def search_book_by_title(title: str, args: dict) -> dict:
     books: dict = []
     title_url: str = title
     if args.get('page') is not None:
-        title_url = str(title + '&page=' + str(args.get('page')))
+        title_url = str('?search=' + title + '&page=' + str(args.get('page')))
 
-    data: dict = get_books_by_title(GUTENDEX_URL.format(title_url.replace(' ', '%20')))
+    data: dict = get_books_by_title(GUTENDEX_URL + title_url.replace(' ', '%20'))
     for result in data['results']:
         if title in result['title']:
             books.append({
@@ -25,3 +25,17 @@ def search_book_by_title(title: str, args: dict) -> dict:
         'previous': find_number_of_page(data['previous']),
         'books': books
     }
+
+
+def search_book_by_id(book_id: str) -> dict:
+    data: dict = get_books_by_title(GUTENDEX_URL + '?ids=' + book_id)
+    for result in data['results']:
+        return {
+            'id': result['id'],
+            'title': result['title'],
+            'authors': result['authors'],
+            'languages': result['languages'],
+            'download_count': result['download_count']
+        }
+
+    return None

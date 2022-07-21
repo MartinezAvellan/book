@@ -26,8 +26,8 @@ def validate_request_body(body: dict) -> dict:
         return {'uuid': uuid_str, 'message': 'review must be between 0-100 characters'}, HTTPStatus.BAD_REQUEST
     elif body.get('rating') is None:
         return {'uuid': uuid_str, 'message': 'rating is required'}, HTTPStatus.BAD_REQUEST
-    elif not isinstance(body.get('rating'), float) and not isinstance(body.get('rating'), int):
-        return {'uuid': uuid_str, 'message': 'rating is not valid like 1 or 1.0'}, HTTPStatus.BAD_REQUEST
+    elif not isinstance(body.get('rating'), int):
+        return {'uuid': uuid_str, 'message': 'rating is not valid integer'}, HTTPStatus.BAD_REQUEST
     elif body.get('rating') < 0 or body.get('rating') > 5:
         return {'uuid': uuid_str, 'message': 'rating is not a range valid between 0-5'}, HTTPStatus.BAD_REQUEST
     else:
