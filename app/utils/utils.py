@@ -23,7 +23,7 @@ def validate_request_body(body: dict) -> dict:
     elif not isinstance(body.get('review'), str):
         return {'uuid': uuid_str, 'message': 'review is not string'}, HTTPStatus.BAD_REQUEST
     elif len(body.get('review')) < 1 or len(body.get('review')) > 250:
-        return {'uuid': uuid_str, 'message': 'review must be between 0-100 characters'}, HTTPStatus.BAD_REQUEST
+        return {'uuid': uuid_str, 'message': 'review must be between 0-250 characters'}, HTTPStatus.BAD_REQUEST
     elif body.get('rating') is None:
         return {'uuid': uuid_str, 'message': 'rating is required'}, HTTPStatus.BAD_REQUEST
     elif not isinstance(body.get('rating'), int):
