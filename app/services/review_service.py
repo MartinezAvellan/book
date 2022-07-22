@@ -1,8 +1,12 @@
 import datetime
 from typing import Any
 
-from peewee import fn
+from peewee import fn, Database
 from app.models.review import Review
+from app.repository.base_model import BaseModel
+from app.utils.constants import NATIVE_QUERY_GET_AVG_RATING_BT_LIMIT, NATIVE_QUERY_GET_AVG_RATING_BT_MONTH
+
+db: Database = BaseModel.get_database()
 
 
 class ReviewService:
@@ -50,15 +54,11 @@ class ReviewService:
     def get_average_by_limit(number: int) -> list:
         try:
             books = []
-            response = (Review.select(Review.book_id, fn.AVG(Review.rating).alias('avg_rating'))
-                        .group_by(Review.book_id)
-                        .order_by(fn.AVG(Review.rating).desc())
-                        .limit(number))
-
-            for review in response:
+            cursor = db.execute_sql(NATIVE_QUERY_GET_AVG_RATING_BT_LIMIT.format(int(number)))
+            for review in cursor.fetchall():
                 books.append({
-                    'book_id': review.book_id,
-                    'rating': round(review.avg_rating, 1),
+                    'book_id': review[0],
+                    'rating': round(review[1], 1),
                 })
 
             return books
@@ -70,15 +70,11 @@ class ReviewService:
     def get_average_by_month(month: int) -> Any:
         try:
             books = []
-            response = (Review.select(Review.book_id, fn.AVG(Review.rating).alias('avg_rating'))
-                        .where(fn.date_trunc('month', Review.create_date) == datetime.date(datetime.date.today().year, month, datetime.date.today().day))
-                        .group_by(Review.book_id)
-                        .order_by(fn.AVG(Review.rating).desc()))
-
-            for review in response:
+            cursor = db.execute_sql(NATIVE_QUERY_GET_AVG_RATING_BT_MONTH.format(int(month)))
+            for review in cursor.fetchall():
                 books.append({
-                    'book_id': review.book_id,
-                    'rating': round(review.avg_rating, 1),
+                    'book_id': review[0],
+                    'rating': round(review[1], 1),
                 })
 
             return books

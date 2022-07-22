@@ -23,3 +23,8 @@ BOOK_CONTROLLER: str = 'book_controller'
 
 # URL
 GUTENDEX_URL: str = 'https://gutendex.com/books/'
+
+
+# NATIVE QUERIES
+NATIVE_QUERY_GET_AVG_RATING_BT_LIMIT: str = 'SELECT book_id, AVG(rating) as rating  FROM TB_REVIEW GROUP BY book_id ORDER BY AVG(rating) DESC LIMIT {};'
+NATIVE_QUERY_GET_AVG_RATING_BT_MONTH: str = 'SELECT book_id, AVG(rating) as rating  FROM TB_REVIEW WHERE MONTH(NOW()) = {} GROUP BY book_id ORDER BY AVG(rating) DESC;'

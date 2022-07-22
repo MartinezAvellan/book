@@ -32,3 +32,30 @@ def validate_request_body(body: dict) -> dict:
         return {'uuid': uuid_str, 'message': 'rating is not a range valid between 0-5'}, HTTPStatus.BAD_REQUEST
     else:
         None
+
+
+def get_months(month: int) -> str:
+    if month == 1:
+        return 'JANUARY'
+    elif month == 2:
+        return 'FEBRUARY'
+    elif month == 3:
+        return 'MARCH'
+    elif month == 4:
+        return 'APRIL'
+    elif month == 5:
+        return 'MAY'
+    elif month == 6:
+        return 'JUNE'
+    elif month == 7:
+        return 'JULY'
+    elif month == 8:
+        return 'AUGUST'
+    elif month == 9:
+        return 'SEPTEMBER'
+    elif month == 10:
+        return 'OCTOBER'
+    elif month == 11:
+        return 'NOVEMBER'
+    else:
+        return 'DECEMBER'
