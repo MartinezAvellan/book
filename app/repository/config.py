@@ -9,7 +9,7 @@ def get_database_connection(auto_connect=True) -> MySQLDatabase:
         user=DB_USER,
         password=DB_PASSWORD,
         host=DB_HOST,
-        port=int(DB_PORT),
+        port=DB_PORT,
         autoconnect=auto_connect,
         autorollback=True
     )

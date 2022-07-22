@@ -44,7 +44,7 @@ class ReviewService:
                 rating: float = sum_ratings / total_ratings
                 return {
                     'book_id': book_id,
-                    'rating': rating,
+                    'rating': round(rating, 1),
                     'reviews': reviews
                 }
             else:
