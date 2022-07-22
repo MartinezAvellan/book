@@ -1,5 +1,22 @@
 # <center>BOOK API</center>
 
+
+### STACK
+```commandline
+- Python 3.9
+- Flask 2.1.3
+- MySQL 5.7
+- Redis 5
+- Peewee 3.15.1
+- Docker
+```
+
+### To run PyTests
+```commandline
+pytest --cov=app tests/ --cov-report=html
+pytest --cov=app tests/ --cov-report=xml:coverage.xml
+```
+
 ### To create a book application on docker, you need to have a docker installed in your machine and run this command inside book directory.
 
 ```commandline
@@ -20,7 +37,7 @@ docker-compose up --build
 
 # <center>APIS</center>
 
-### GET - /book-by-title/< title >
+### GET - /book/book-by-title/< title >
 ### Query Parameter: page 
 #### to go and back case exists next or previous pages
 
@@ -66,7 +83,7 @@ docker-compose up --build
 ```
 
 
-### POST - /create-book-review-and-rating
+### POST - /book/create-book-review-and-rating
 #### REQUEST
 #### RESPONSE: 200
 ```json
@@ -86,7 +103,7 @@ docker-compose up --build
 }
 ```
 
-### GET - /book-details-and-rating/< book_id >
+### GET - /book/book-details-and-rating/< book_id >
 #### RESPONSE: 200
 ```json
 {
@@ -118,7 +135,7 @@ docker-compose up --build
 }
 ```
 
-### GET - //book-top-number-average-rating/< number >
+### GET - /book/book-top-number-average-rating/< number >
 #### RESPONSE: 200
 ```json
 {
@@ -148,11 +165,11 @@ docker-compose up --build
 ```
 
 
-### GET - /book-top-month-average-rating/< month >
+### GET - /book/book-top-month-average-rating/< month >
 #### RESPONSE: 200
 ```json
 {
-    "rating top by month 7 avg": [
+    "rating top avg by JULY ": [
         {
             "book_id": 1,
             "rating": 5
