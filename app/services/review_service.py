@@ -14,7 +14,6 @@ class ReviewService:
             )
             if response is not None:
                 result = model_to_dict(response)
-                print({'message': 'review created', 'book_id': int(review.get('book_id')), 'review': result})
                 review: dict = {
                     'id': result.get('id'),
                     'book_id': result.get('book_id'),
@@ -26,7 +25,7 @@ class ReviewService:
             else:
                 raise Exception(response)
         except Exception as e:
-            print({'Error: ': 'review cant be created', 'book_id': int(review.get('user_id')), 'exception': e.args})
+            print({'Error: ': 'review cant be created', 'book_id': review.get('book_id'), 'exception': e.args})
             return None
 
     @staticmethod
@@ -38,7 +37,6 @@ class ReviewService:
                 reviews = []
                 sum_ratings: int = 0
                 total_ratings: int = len(result)
-                rating: float = 0.0
                 for r in result:
                     reviews.append(r.get('review'))
                     sum_ratings = sum_ratings + int(r.get('rating'))

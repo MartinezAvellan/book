@@ -2,9 +2,9 @@ import json
 import requests
 
 
-def get_books_by_title(url: str) -> dict:
+def get_books_api(url: str) -> dict:
     response = requests.request("GET", url, headers={}, data={})
-    print('Response code {}. body: {}. URL: {}'.format(response.status_code, response.text, url))
+    print('Response code {}, URL: {}'.format(response.status_code, url))
     if response.status_code == 200:
         return json.loads(response.text)
     else:
