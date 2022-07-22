@@ -7,7 +7,7 @@ from flask import Blueprint, request
 from app.services.book_service import search_book_by_title, search_book_by_id
 from app.services.redis_service import RedisService
 from app.services.review_service import ReviewService
-from app.utils.constants import BOOK_CONTROLLER
+from app.utils.constants import BOOK_CONTROLLER, REDIS_TTL
 from app.utils.utils import validate_request_body
 
 blueprint = Blueprint(BOOK_CONTROLLER, __name__)
@@ -27,7 +27,7 @@ def book_by_title(title: str):
         return json.loads(books), HTTPStatus.OK
 
     books = search_book_by_title(title, args)
-    redis_client.set(redis_key, json.dumps(books), 300)
+    redis_client.set(redis_key, json.dumps(books), REDIS_TTL)
 
     return books, HTTPStatus.OK
 
@@ -66,6 +66,18 @@ def book_details_and_rating(book_id: int):
         book['rating'] = reviews.get('rating')
         book['reviews'] = reviews.get('reviews')
 
-    redis_client.set(book_id, json.dumps(book), 300)
+    redis_client.set(book_id, json.dumps(book), REDIS_TTL)
 
     return book, HTTPStatus.OK
+
+
+@blueprint.route('/book-top-number-average-rating/<number>', methods=['GET'])
+def book_top_number_average_rating(number: int):
+    books = ReviewService.get_average_by_limit(int(number))
+    return {"rating top {} avg".format(number): books}, HTTPStatus.OK
+
+
+@blueprint.route('/book-top-month-average-rating/<month>', methods=['GET'])
+def book_top_month_average_rating(month: int):
+    books = ReviewService.get_average_by_month(int(month))
+    return {"rating top by month {} avg".format(month): books}, HTTPStatus.OK

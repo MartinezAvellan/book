@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "1d437c67-6ef1-427a-8dd5-74db0b6f643f",
+		"name": "books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7804806"
+	},
+	"item": [
+		{
+			"name": "book-by-title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/book/book-by-title/Frankenstein",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"book",
+						"book-by-title",
+						"Frankenstein"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-book-review-and-rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"book_id\": 5,\r\n    \"rating\": 2,\r\n    \"review\": \"Este livro eh medio 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/book/create-book-review-and-rating",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"book",
+						"create-book-review-and-rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book-details-and-rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/book/book-details-and-rating/84",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"book",
+						"book-details-and-rating",
+						"84"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book-top-number-average-rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/book/book-top-number-average-rating/5",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"book",
+						"book-top-number-average-rating",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book-top-month-average-rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/book/book-top-month-average-rating/7",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"book",
+						"book-top-month-average-rating",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

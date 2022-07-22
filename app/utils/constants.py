@@ -16,6 +16,7 @@ TABLE_REVIEW: str = 'TB_REVIEW'
 # REDIS
 REDIS_HOST: str = os.getenv('REDIS_HOST', '127.0.0.1')
 REDIS_PORT: int = int(os.getenv('REDIS_PORT', 6379))
+REDIS_TTL: int = int(os.getenv('REDIS_TTL', 300))
 
 # CONTROLLER CONFIG
 BOOK_CONTROLLER: str = 'book_controller'
