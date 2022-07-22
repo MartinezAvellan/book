@@ -10,4 +10,6 @@ COPY . .
 
 RUN pip3 install -r requirements.txt
 
+CMD pytest --cov=app
+
 CMD python application.py

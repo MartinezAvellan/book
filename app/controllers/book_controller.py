@@ -1,3 +1,4 @@
+import calendar
 import json
 import uuid
 from http import HTTPStatus
@@ -8,7 +9,7 @@ from app.services.book_service import search_book_by_title, search_book_by_id
 from app.services.redis_service import RedisService
 from app.services.review_service import ReviewService
 from app.utils.constants import BOOK_CONTROLLER, REDIS_TTL
-from app.utils.utils import validate_request_body, get_months
+from app.utils.utils import validate_request_body
 
 blueprint = Blueprint(BOOK_CONTROLLER, __name__)
 redis_client = RedisService()
@@ -80,4 +81,4 @@ def book_top_number_average_rating(number: int):
 @blueprint.route('/book-top-month-average-rating/<month>', methods=['GET'])
 def book_top_month_average_rating(month: int):
     books = ReviewService.get_average_by_month(int(month))
-    return {"rating top avg by {} ".format(get_months(int(month))): books}, HTTPStatus.OK
+    return {"rating top avg by {} ".format(calendar.month_name[int(month)]): books}, HTTPStatus.OK

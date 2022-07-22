@@ -13,9 +13,13 @@
 
 ### To run PyTests
 ```commandline
-pytest --cov=app tests/ --cov-report=html
-pytest --cov=app tests/ --cov-report=xml:coverage.xml
+pytest --cov=app
 ```
+
+
+<object type="text/html" data="./htmlcov/index.html">
+</object>
+
 
 ### To create a book application on docker, you need to have a docker installed in your machine and run this command inside book directory.
 
@@ -85,7 +89,6 @@ docker-compose up --build
 
 ### POST - /book/create-book-review-and-rating
 #### REQUEST
-#### RESPONSE: 200
 ```json
 {
     "book_id": 5,
@@ -136,6 +139,7 @@ docker-compose up --build
 ```
 
 ### GET - /book/book-top-number-average-rating/< number >
+#### < number > is value query LIMIT
 #### RESPONSE: 200
 ```json
 {
@@ -166,10 +170,11 @@ docker-compose up --build
 
 
 ### GET - /book/book-top-month-average-rating/< month >
+#### < month > is value between 1-12 of months
 #### RESPONSE: 200
 ```json
 {
-    "rating top avg by JULY ": [
+    "rating top avg by July ": [
         {
             "book_id": 1,
             "rating": 5
