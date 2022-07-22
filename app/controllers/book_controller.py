@@ -36,8 +36,12 @@ def book_details_and_rating(book_id: int):
     if book is None:
         return {'uuid': uuid.uuid4().__str__(), 'message': 'book not found'}, HTTPStatus.BAD_REQUEST
 
-    reviews: dict = ReviewService.get_reviews_and_average(book_id)
-    book['rating'] = reviews.get('rating')
-    book['reviews'] = reviews.get('reviews')
+    book['rating'] = 0.0
+    book['reviews'] = []
+
+    reviews: dict = ReviewService.get_reviews_and_average(int(book_id))
+    if reviews is not None:
+        book['rating'] = reviews.get('rating')
+        book['reviews'] = reviews.get('reviews')
 
     return book, HTTPStatus.OK

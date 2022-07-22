@@ -8,7 +8,7 @@ class Review(BaseModel):
 
     id = BigAutoField(primary_key=True)
     book_id = IntegerField(null=False)
-    rating = FloatField(null=False)
+    rating = IntegerField(null=False)
     review = CharField(max_length=250)
     create_date = DateTimeField(null=False)
     update_date = DateTimeField(null=False)

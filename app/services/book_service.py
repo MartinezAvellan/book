@@ -7,9 +7,9 @@ def search_book_by_title(title: str, args: dict) -> dict:
     books: dict = []
     title_url: str = title
     if args.get('page') is not None:
-        title_url = str('?search=' + title + '&page=' + str(args.get('page')))
+        title_url = str(title + '&page=' + str(args.get('page')))
 
-    data: dict = get_books_by_title(GUTENDEX_URL + title_url.replace(' ', '%20'))
+    data: dict = get_books_by_title(GUTENDEX_URL + '?search=' + title_url.replace(' ', '%20'))
     for result in data['results']:
         if title in result['title']:
             books.append({
