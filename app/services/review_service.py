@@ -50,7 +50,7 @@ class ReviewService:
             return None
 
     @staticmethod
-    def get_average_by_limit(number: int) -> list:
+    def get_average_by_limit(number: int) -> Any:
         try:
             books = []
             cursor = db.execute_sql(NATIVE_QUERY_GET_AVG_RATING_BT_LIMIT.format(int(number)))
