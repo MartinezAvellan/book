@@ -47,8 +47,9 @@ docker-compose up --build
 # <center>APIS</center>
 
 ### GET - /book/book-by-title/< title >
-### Query Parameter: page 
-#### to go and back case exists next or previous pages
+### Path Parameter: title {STRING}
+### Query Parameter: page {INT}
+#### to go and back in case exists next or previous pages
 
 
 #### RESPONSE: 200
@@ -112,6 +113,7 @@ docker-compose up --build
 ```
 
 ### GET - /book/book-details-and-rating/< book_id >
+### Path Parameter: book_id {INT}
 #### RESPONSE: 200
 ```json
 {
@@ -144,7 +146,7 @@ docker-compose up --build
 ```
 
 ### GET - /book/book-top-number-average-rating/< number >
-#### < number > is value query LIMIT
+#### Path Parameter: number {INT} is a value in query LIMIT
 #### RESPONSE: 200
 ```json
 {
@@ -176,7 +178,7 @@ docker-compose up --build
 
 
 ### GET - /book/book-top-month-average-rating/< month >
-#### < month > is value between 1-12 of months
+#### Path Parameter: month {INT} is a value between 1-12 of months
 #### RESPONSE: 200
 ```json
 {
