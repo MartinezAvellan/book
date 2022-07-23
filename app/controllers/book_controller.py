@@ -81,4 +81,4 @@ def book_top_number_average_rating(number: int):
 @blueprint.route('/book-top-month-average-rating/<month>', methods=['GET'])
 def book_top_month_average_rating(month: int):
     books = ReviewService.get_average_by_month(int(month))
-    return {"message": "rating top avg by {} ".format(calendar.month_name[int(month)]), "ratings": books}, HTTPStatus.OK
+    return {"message": "rating top avg by {}".format(calendar.month_name[int(month)]), "ratings": books}, HTTPStatus.OK
