@@ -1,7 +1,6 @@
-import datetime
 from typing import Any
 
-from peewee import fn, Database
+from peewee import Database
 from app.models.review import Review
 from app.repository.base_model import BaseModel
 from app.utils.constants import NATIVE_QUERY_GET_AVG_RATING_BT_LIMIT, NATIVE_QUERY_GET_AVG_RATING_BT_MONTH
@@ -48,7 +47,7 @@ class ReviewService:
             }
         except Exception as e:
             print({'Error: ': e.args})
-            raise None
+            return None
 
     @staticmethod
     def get_average_by_limit(number: int) -> list:
@@ -64,7 +63,7 @@ class ReviewService:
             return books
         except Exception as e:
             print({'Error: ': e.args})
-            raise None
+            return None
 
     @staticmethod
     def get_average_by_month(month: int) -> Any:
@@ -80,4 +79,4 @@ class ReviewService:
             return books
         except Exception as e:
             print({'Error: ': e.args})
-            raise None
+            return None
