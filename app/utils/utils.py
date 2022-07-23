@@ -1,9 +1,10 @@
 import uuid
 from http import HTTPStatus
+from typing import Any
 
 
 def find_number_of_page(url: str) -> int:
-    page: int = None
+    page = None
     if url is not None and 'page=' in url:
         start = url.find("?page=") + len("?page=")
         end = url.find("&")
@@ -12,7 +13,7 @@ def find_number_of_page(url: str) -> int:
     return page
 
 
-def validate_request_body(body: dict) -> dict:
+def validate_request_body(body: dict) -> Any:
     uuid_str = uuid.uuid4().__str__()
     if body.get('book_id') is None:
         return {'uuid': uuid_str, 'message': 'book_id is required'}, HTTPStatus.BAD_REQUEST

@@ -6,3 +6,4 @@ omit =
     app/repository/*
     app/utils/constants.py
     app/services/review_service.py
+    app/services/redis_service.py

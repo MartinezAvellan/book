@@ -3,23 +3,28 @@
 
 ### STACK
 ```commandline
-- Python 3.9
-- Flask 2.1.3
-- MySQL 5.7
-- Redis 5
-- Peewee 3.15.1
-- Docker
+Python 3.9
+Flask 2.1.3
+MySQL 5.7
+Redis 5
+Peewee 3.15.1
+Docker
 ```
 
 ### To run PyTests
 ```commandline
 pytest --cov=app
 ```
+<p align="center">
+   <img alt="ARCHITETURE" src="./docs/coverage_test.png" width="100%">
+</p>
 
-
-<object type="text/html" data="./htmlcov/index.html">
-</object>
-
+```commandline
+pytest --cov=app tests/ --cov-report=html
+```
+<p align="center">
+   <img alt="ARCHITETURE" src="./docs/coverage_tests_web.png" width="100%">
+</p>
 
 ### To create a book application on docker, you need to have a docker installed in your machine and run this command inside book directory.
 
@@ -143,7 +148,8 @@ docker-compose up --build
 #### RESPONSE: 200
 ```json
 {
-    "rating top 5 average": [
+    "message": "rating top 5 average",
+    "ratings": [
         {
             "book_id": 1,
             "rating": 5
@@ -174,7 +180,8 @@ docker-compose up --build
 #### RESPONSE: 200
 ```json
 {
-    "rating top avg by July ": [
+    "message": "rating top avg by July ",
+    "ratings": [
         {
             "book_id": 1,
             "rating": 5
